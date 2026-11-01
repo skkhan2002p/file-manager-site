@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEGASUS // Cyber Intel & Secure File Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Cyber Status Bar -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">PEGASUS<span class="accent-dot">.v4</span></span>
+        <span class="brand-sub">CYBER INTEL Explorer</span>
+      </div>
+    </div>
+
+    <div class="header-status">
+      <div class="status-pill active">
+        <span class="pulse-dot"></span>
+        <span class="status-label">SOCKET: LIVE INTERCEPT</span>
+      </div>
+      <div class="status-pill sec">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pill-icon">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>AES-256 ENCRYPTED</span>
+      </div>
+    </div>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="app-layout">
+    <!-- Overlay for mobile drawer -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">INTEL VAULTS</div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-folder="root">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Root Intel</span>
+            <span class="badge" id="badgeRoot">12</span>
+          </button>
+          <button class="nav-item" data-folder="target_alpha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="22" y1="12" x2="18" y2="12"></line>
+              <line x1="6" y1="12" x2="2" y2="12"></line>
+              <line x1="12" y1="6" x2="12" y2="2"></line>
+              <line x1="12" y1="22" x2="12" y2="18"></line>
+            </svg>
+            <span>Target Alpha</span>
+            <span class="badge" id="badgeAlpha">5</span>
+          </button>
+          <button class="nav-item" data-folder="audio_intercepts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+            </svg>
+            <span>Call Intercepts</span>
+            <span class="badge" id="badgeCalls">4</span>
+          </button>
+          <button class="nav-item" data-folder="surveillance_media">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <span>Surveillance Cam</span>
+            <span class="badge" id="badgeMedia">3</span>
+          </button>
+          <button class="nav-item" data-folder="encrypted_keys">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 2l-2 2m-2-2l2 2m2 4l-4 4-2-2 1.5-1.5M15.5 12.5l-2-2M10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"></path>
+            </svg>
+            <span>Decryption Keys</span>
+            <span class="badge">2</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Cyber System Monitor -->
+      <div class="sidebar-widget">
+        <div class="widget-header">
+          <span>CYBER RADAR</span>
+          <span class="live-tag">LIVE</span>
+        </div>
+        <div class="radar-container">
+          <div class="radar-sweep"></div>
+          <div class="radar-blip b1"></div>
+          <div class="radar-blip b2"></div>
+        </div>
+        <div class="sys-metrics">
+          <div class="metric">
+            <div class="metric-label"><span>STORAGE</span> <span>18.4 GB / 64 GB</span></div>
+            <div class="progress-bar"><div class="fill" style="width: 28%"></div></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label"><span>INTEL BUFFER</span> <span>89%</span></div>
+            <div class="progress-bar"><div class="fill green" style="width: 89%"></div></div>
+          </div>
+        </div>
+        <button class="btn btn-scan w-full" id="scanBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+          RUN SYSTEM SCAN
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Breadcrumbs & Search Controls -->
+      <div class="control-panel">
+        <div class="breadcrumb-container" id="breadcrumb">
+          <span class="bc-item" data-folder="root">Root</span>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search intel files, extensions, tags..." />
+            <button class="clear-search" id="clearSearch" aria-label="Clear Search">&times;</button>
+          </div>
+
+          <div class="filter-group">
+            <select id="typeFilter" class="select-input">
+              <option value="all">All File Types</option>
+              <option value="folder">Folders Only</option>
+              <option value="document">Documents / Logs</option>
+              <option value="audio">Audio Intercepts</option>
+              <option value="image">Media / Images</option>
+              <option value="key">Keys & Payloads</option>
+            </select>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-secondary" id="newFolderBtn" title="New Cyber Folder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                <line x1="12" y1="11" x2="12" y2="17"></line>
+                <line x1="9" y1="14" x2="15" y2="14"></line>
+              </svg>
+              <span class="btn-text">Folder</span>
+            </button>
+
+            <button class="btn btn-primary" id="uploadFileBtn" title="Upload Intercept">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <span class="btn-text">Import</span>
+            </button>
+
+            <div class="view-toggle">
+              <button class="view-btn active" id="gridViewBtn" title="Grid View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </button>
+              <button class="view-btn" id="listViewBtn" title="List View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="8" y1="6" x2="21" y2="6"></line>
+                  <line x1="8" y1="12" x2="21" y2="12"></line>
+                  <line x1="8" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Manager Grid / Container -->
+      <section class="explorer-area">
+        <div class="explorer-header">
+          <div class="explorer-info">
+            <h2 id="currentFolderName" class="folder-title">Root Intel Directory</h2>
+            <span class="item-count" id="itemCount">0 items</span>
+          </div>
+          <div class="sorting-controls">
+            <span class="sort-label">Sort by:</span>
+            <select id="sortSelect" class="select-input select-sm">
+              <option value="name">Name (A-Z)</option>
+              <option value="date">Modified Date</option>
+              <option value="size">Size</option>
+              <option value="class">Classification</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Files Display Container (Grid mode default) -->
+        <div class="file-grid" id="fileContainer">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <!-- Empty State View -->
+        <div class="empty-state hidden" id="emptyState">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            <line x1="9" y1="13" x2="15" y2="13"></line>
+          </svg>
+          <h3>Vault Folder Empty</h3>
+          <p>No intercepted files or telemetry data match your current query.</p>
+        </div>
+      </section>
+
+      <!-- Security Log Terminal Footer Widget -->
+      <section class="intel-terminal">
+        <div class="terminal-header">
+          <div class="term-title">
+            <span class="term-dot"></span>
+            <span>INTEL CONSOLE LOGS</span>
+          </div>
+          <button class="term-toggle" id="clearLogsBtn">Clear Logs</button>
+        </div>
+        <div class="terminal-body" id="terminalLogs">
+          <div class="log-line text-cyan">[00:00:12] PEGASUS kernel module initialized. Listening on port 4433...</div>
+          <div class="log-line text-green">[00:00:14] Decryption key pair #7819 active. All outbound traffic intercepted.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal: File Inspector / Detailed Preview -->
+  <div class="modal-backdrop hidden" id="previewModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="badge-tag" id="modalClass">TOP SECRET</span>
+          <h3 id="modalFileName">file_name.ext</h3>
+        </div>
+        <button class="modal-close" id="closeModalBtn" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-meta-grid">
+          <div class="meta-item">
+            <span class="meta-lbl">FILE TYPE</span>
+            <span class="meta-val" id="modalFileType">Audio / WAV</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-lbl">FILE SIZE</span>
+            <span class="meta-val" id="modalFileSize">4.2 MB</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-lbl">TIMESTAMP</span>
+            <span class="meta-val" id="modalFileDate">2025-02-23 14:22:01</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-lbl">ORIGIN / TARGET</span>
+            <span class="meta-val text-neon" id="modalFileTarget">Target_Alpha (+972-50-8882)</span>
+          </div>
+        </div>
+
+        <div class="modal-preview-box">
+          <div class="preview-header">
+            <span>HEX & INTEL PAYLOAD INSPECTOR</span>
+            <span class="status-live">ENCRYPTED</span>
+          </div>
+          <div class="preview-content" id="modalPreviewContent">
+            <!-- Dynamic hex / text preview -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="shredFileBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          Shred File
+        </button>
+        <button class="btn btn-primary" id="downloadFileBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export Payload
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Create Folder -->
+  <div class="modal-backdrop hidden" id="folderModal">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3>Create Cyber Intel Folder</h3>
+        <button class="modal-close" id="closeFolderModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label class="input-label" for="folderNameInput">Folder Identifier / Name</label>
+        <input type="text" id="folderNameInput" class="text-input" placeholder="e.g., Target_Beta_Logs" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelFolderBtn">Cancel</button>
+        <button class="btn btn-primary" id="confirmFolderBtn">Create Vault</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Invisible file input for upload simulation -->
+  <input type="file" id="hiddenFileInput" style="display:none" multiple />
+
+  <script src="app.js"></script>
+</body>
+</html>
